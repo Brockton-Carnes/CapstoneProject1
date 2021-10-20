@@ -15,6 +15,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root,500,400);
 			scene.getStylesheets().add(getClass().getResource("Window.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle("MySpy");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
