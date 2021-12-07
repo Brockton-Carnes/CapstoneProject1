@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="35.0" prefWidth="600.0">
+            <HBox prefHeight="36.0" prefWidth="600.0">
                <children>
                   <Label fx:id="FileLabel" alignment="CENTER" onMouseClicked="#fileOpen" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="File" />
-                  <Label fx:id="search" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Search" />
-                  <Label fx:id="tools" alignment="CENTER" layoutX="85.0" layoutY="10.0" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Tools" />
+                  <Label fx:id="save" alignment="CENTER" layoutX="85.0" layoutY="10.0" onMouseClicked="#saveData" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Save" />
+                  <Label fx:id="clear" alignment="CENTER" layoutX="85.0" layoutY="10.0" onMouseClicked="#clearData" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Clear" />
+                  <Label fx:id="search" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#searchData" prefHeight="35.0" prefWidth="75.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Search">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets></Label>
+                  <TextField fx:id="searchBar" prefHeight="35.0" prefWidth="149.0">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin></TextField>
                </children>
             </HBox>
             <Separator prefWidth="200.0" />
@@ -27,15 +40,45 @@
    <left>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="365.0" prefWidth="149.0">
+            <VBox fx:id="leftPane" prefHeight="365.0" prefWidth="149.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="         Select Initial Date" wrappingWidth="148.751953125" />
+                  <Text fill="#f8f8f8" strokeType="OUTSIDE" strokeWidth="0.0" text="         Select Initial Date" wrappingWidth="148.751953125" />
                   <DatePicker fx:id="initialDate" prefHeight="34.0" prefWidth="149.0" />
-                  <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="         Select End Date" wrappingWidth="148.751953125" />
+                  <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="         Select End Date" wrappingWidth="148.751953125">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.9725490212440491" green="0.9725490212440491" blue="0.9725490212440491" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill></Text>
                   <DatePicker fx:id="endDate" layoutX="10.0" layoutY="27.0" prefHeight="34.0" prefWidth="149.0" />
-                  <Label fx:id="showData" alignment="CENTER" onMouseClicked="#showData" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Show Data" />
-                  <Label fx:id="WordFerquency" alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Word Ferquency" />
-                  <Label fx:id="TimeAnalysis" alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Time Analysis" />
+                  <Label fx:id="showData" alignment="CENTER" onMouseClicked="#showData" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Show Data">
+                     <VBox.margin>
+                        <Insets left="16.0" top="25.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="WordFerquency" alignment="CENTER" onMouseClicked="#wordFrequency" layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Word Ferquency">
+                     <VBox.margin>
+                        <Insets left="16.0" top="25.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="TimeAnalysis" alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Time Analysis">
+                     <VBox.margin>
+                        <Insets left="16.0" top="25.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="PasswordCatch" alignment="CENTER" layoutX="10.0" layoutY="172.0" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: #e6e6e6; -fx-border-color: black;" text="Password Catch">
+                     <VBox.margin>
+                        <Insets left="16.0" top="25.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
